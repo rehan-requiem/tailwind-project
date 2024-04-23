@@ -1,83 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://unpkg.com/alpinejs" defer></script>
-  <link rel="stylesheet" href="/src/output.css">
-  <style>
-    [x-cloak] {
-      display: none;
-    }
-  </style>
-  <title>Mobile Hamburger Menu</title>
-  
-</head>
-<body>
-  <div class="container mx-auto mt-6 w-[1200px] p-4 overflow-hidden">
-    <h1 class="text-5xl mb-4">Alpine.js Demo</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/alpinejs" defer></script>
+    <link rel="stylesheet" href="/src/output.css" />
+    <style>
+      [x-cloak] {
+        display: none;
+      }
+    </style>
+    <title>Mobile Hamburger Menu</title>
+  </head>
+  <body>
+    <div class="container mx-auto mt-6 w-[1200px] p-4 overflow-hidden">
+      <h1 class="text-5xl mb-4">Alpine.js Demo</h1>
 
-    <div class="faq | py-2 rounded cursor-pointer bg-slate-600 text-white px-3 space-y-2" x-data="{ open: false }">
+      <div class="faq-wrapper | flex flex-col gap-2">
+        <div
+          class="faq | py-2 rounded cursor-pointer bg-slate-600 text-white px-3 space-y-2"
+          x-data="{ open: false }"
+        >
+          <div
+            class="faq-header | flex items-center justify-between transition-all text-lg font-bold"
+            @click="open = !open"
+          >
+            <p class="question | w-[90%]">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut,
+            </p>
 
-      <div  class="faq-header |  flex items-center justify-between transition-all text-lg font-bold" @click="open = !open">
+            <span
+              class="transition-all duration-[280ms] ease-in text-lg"
+              x-bind:class="open ? 'rotate-45' : 'rotate-0'"
+            >
+              <svg
+                class="w-[14px] h-[14px] fill-white"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+              >
+                <path
+                  d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"
+                />
+              </svg>
+            </span>
+          </div>
 
-        <p class="question | w-[90%]">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut,</p>
-
-        <span class="transition-all duration-[280ms] ease-in text-lg" x-bind:class="open ? 'rotate-45' : 'rotate-0'">
-
-          <svg class="w-[14px] h-[14px] fill-white" xmlns="http://www.w3.org/2000/svg"viewBox="0 0 448 512"><path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7 0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z"/></svg>
-        </span>
-      </div>
-    
-      <div class="faq-body transition-all duration-[280ms] ease-linear overflow-hidden" x-bind:class="open ? 'max-h-[300px]' : 'max-h-0'" x-cloak>
-        
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima illo praesentium quidem quod corporis saepe! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam exercitationem voluptate at aperiam omnis nemo nesciunt architecto pariatur nihil excepturi laudantium iure, blanditiis quam rerum reprehenderit enim numquam tenetur nulla ipsam ad ullam! Facilis dolor sapiente modi reiciendis quae, neque saepe similique velit? Neque nesciunt quaerat corporis doloribus, dolorum quo!</p>
-      </div>
-    
-    </div>
-
-    
-
-    <div x-data="{open: false,
-      name: 'Rehan',
-      search: '',
-      }">
-
-      
-
-      <!-- <button x-bind:class="open ? 'bg-blue-700' : 'bg-slate-700'" x-on:click="open = !open" class="">Toggle</button> -->
-
-      <p x-show="open" x-transition x-cloak class="bg-gray-500 text-white p-4 mt-4 rounded">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, animi? Reiciendis et nulla sunt provident vitae, ut facilis aliquid sequi.</p>
-
-      <div class="my-4">
-        The value of name is <span x-text="name" class="font-bold"></span>
-      </div>
-
-      <input x-model="search" type="text" class="border p-2 w-full mb-2 mt-6 rounded border-purple-700 text-lg" placeholder="Search for something...">
-
-      <p>
-        <span class="font-bold">Searching for:</span>
-        <span x-text="search"></span>
-      </p>
-
-      <div x-effect="console.log(open)"></div>
-      
-      <template x-if="open">
-        <div class="bg-gray-200 p-2 mt-8">
-          Template based on a condition
+          <div
+          x-cloak
+            class="faq-body transition-all duration-[280ms] ease-linear overflow-hidden"
+            x-bind:class="open ? 'max-h-[550px] pt-2 border-t-[1px] border-white' : 'max-h-0'"
+          >
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima
+              illo praesentium quidem quod corporis saepe! Lorem ipsum dolor sit
+              amet, consectetur adipisicing elit. Magnam exercitationem
+              voluptate at aperiam omnis nemo nesciunt architecto pariatur nihil
+              excepturi laudantium iure, blanditiis quam rerum reprehenderit
+              enim numquam tenetur nulla ipsam ad ullam! Facilis dolor sapiente
+              modi reiciendis quae, neque saepe similique velit? Neque nesciunt
+              quaerat corporis doloribus, dolorum quo!
+            </p>
+          </div>
         </div>
-      </template>
+        
+        </div>
 
-
-
-
-
-
-
-
-
-
-    </div>    
   </div>
-</body>
+
+      </div>
+
+      <div
+        class="container w-[1200px] mx-auto"
+        x-data="{open: false,
+        name: 'Rehan',
+        search: '',
+        posts: [
+          {title: 'Post One'},
+          {title: 'Post Two'},
+          {title: 'Post Three'},
+          {title: 'Post Four'},
+        ]
+      }"
+      >
+        <!-- <button x-bind:class="open ? 'bg-blue-700' : 'bg-slate-700'" x-on:click="open = !open" class="">Toggle</button> -->
+
+        <p
+          x-show="open"
+          x-transition
+          x-cloak
+          class="bg-gray-500 text-white p-4 mt-4 rounded"
+        >
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, animi?
+          Reiciendis et nulla sunt provident vitae, ut facilis aliquid sequi.
+        </p>
+
+        <div class="my-4">
+          The value of name is <span x-text="name" class="font-bold"></span>
+        </div>
+
+        <input
+          x-model="search"
+          type="text"
+          class="border p-2 w-full mb-2 mt-6 rounded border-purple-700 text-lg"
+          placeholder="Search for something..."
+        />
+
+        <p>
+          <span class="font-bold">Searching for:</span>
+          <span x-text="search"></span>
+        </p>
+
+        <div x-effect="console.log(open)"></div>
+
+        <template x-if="open">
+          <div class="bg-gray-200 p-2 mt-8">Template based on a condition</div>
+        </template>
+
+        <!-- x-if -->
+
+        <h3 class="text-2xl mt-6 mb-3 font-bold">Posts</h3>
+        <template x-for="post in posts">
+          <p x-text="post.title"></p>
+        </template>
+
+        <button class="bg-blue-800 text-white px-4 py-2 rounded mt-4" @click="posts.push({title: 'New post'})">Add Post</button>
+
+        <!-- x-ref -->
+        <div class="my-6">
+          <div x-ref="text"></div>
+
+          <button class="bg-purple-800 text-white px-4 py-2 rounded mt-4" @click="$refs.text.textContent = `${$el.textContent} Button` ">Update</button>
+        </div>
+
+        <!-- x-html -->
+
+        <div x-data="{color: null}">
+          <div class="size-fit bg-red-600" x-text="$refs.para.innerText"></div>
+        
+          <p
+           @click="color = $el.style.color"class="para text-blue-500" x-ref="para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus deserunt ipsa expedita eius quae iure impedit distinctio eveniet ratione reiciendis saepe dignissimos libero officia nostrum nisi nemo, magnam soluta ea earum incidunt ex deleniti quisquam animi! Nobis repellat magnam eum saepe consectetur? Voluptas, rem. Unde officia sed aliquid illum minus.</p>
+        </div>
+
+        <!-- Dispatch -->
+        <div @notify="let body = document.querySelector('body'); 
+         body.classList.toggle('bg-blue-200');" @changeback="document.querySelector('body').classList.remove('bg-blue-200')">
+
+          <button @mouseover="$dispatch('notify')" @mouseleave="$dispatch('changeback')" class="bg-purple-600 p-2 mt-5 rounded text-white">Change</button>
+        </div>
+      </div>
+        
+      </div>
+
+      
+
+    
+
+    
+    
+  </body>
 </html>
